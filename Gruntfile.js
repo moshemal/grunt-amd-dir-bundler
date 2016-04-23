@@ -12,17 +12,6 @@ module.exports = function(grunt) {
 
   // Project configuration.
   grunt.initConfig({
-    jshint: {
-      all: [
-        'Gruntfile.js',
-        'tasks/*.js',
-        '<%= nodeunit.tests %>'
-      ],
-      options: {
-        jshintrc: '.jshintrc'
-      }
-    },
-
     // Before generating any new files, remove any previously-created files.
     clean: {
       tests: ['tmp']
@@ -30,20 +19,25 @@ module.exports = function(grunt) {
 
     // Configuration to be run (and then tested).
     amd_dir_bundler: {
-      default_options: {
-        options: {
-        },
+      //default_options: {
+      //  options: {
+      //  },
+      //  files: {
+      //    'tmp/default_options': ['test/fixtures/testing', 'test/fixtures/123']
+      //  }
+      //},
+      //custom_options: {
+      //  options: {
+      //    separator: ': ',
+      //    punctuation: ' !!!'
+      //  },
+      //  files: {
+      //    'tmp/custom_options': ['test/fixtures/testing', 'test/fixtures/123']
+      //  }
+      //}
+      main5: {
         files: {
-          'tmp/default_options': ['test/fixtures/testing', 'test/fixtures/123']
-        }
-      },
-      custom_options: {
-        options: {
-          separator: ': ',
-          punctuation: ' !!!'
-        },
-        files: {
-          'tmp/custom_options': ['test/fixtures/testing', 'test/fixtures/123']
+          'tmp/main5.js': ['test/fixtures/main5.js']
         }
       }
     },
@@ -68,6 +62,6 @@ module.exports = function(grunt) {
   grunt.registerTask('test', ['clean', 'amd_dir_bundler', 'nodeunit']);
 
   // By default, lint and run all tests.
-  grunt.registerTask('default', ['jshint', 'test']);
+  grunt.registerTask('default', ['test']);
 
 };
