@@ -1,4 +1,4 @@
-# grunt-amd-dir-bundler
+# NOT USABLE YET grunt-amd-dir-bundler
 
 > bundle an AMD module with its private dependencies into a single javascript file
 
