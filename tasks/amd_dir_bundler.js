@@ -17,43 +17,21 @@ module.exports = function(grunt) {
   grunt.registerMultiTask('amd_dir_bundler', 'bundle an AMD module with its private dependencies into a single javascript file', function() {
     var done = this.async();
     // Merge task-specific and/or target-specific options with these defaults.
-    //var options = this.options();
+    // var options = this.options({
+    //
+    // });
 
-    // Iterate over all specified file groups.
+    // Iterate over all specified files
     var promises = this.files.map(function(el) {
-
-      //options.sourceFileName = path.relative(path.dirname(el.dest), el.src[0]);
-
       return bundler.pack(el.src[0]).then(function(res){
         grunt.file.write(el.dest, res);
         grunt.log.writeln('File "' + el.dest + '" created.');
-      }, function(err){console.log(err)});
-
-
-      // Concat specified files.
-      //var src = f.src.filter(function(filepath) {
-      //  // Warn on and remove invalid source files (if nonull was set).
-      //  if (!grunt.file.exists(filepath)) {
-      //    grunt.log.warn('Source file "' + filepath + '" not found.');
-      //    return false;
-      //  } else {
-      //    return true;
-      //  }
-      //}).map(function(filepath) {
-      //  // Read file source.
-      //  return grunt.file.read(filepath);
-      //}).join(grunt.util.normalizelf(options.separator));
-      //
-      //// Handle options.
-      //src += options.punctuation;
-      //
-      //// Write the destination file.
-      //grunt.file.write(f.dest, src);
-      //
-      //// Print a success message.
-      //grunt.log.writeln('File "' + f.dest + '" created.');
+      }, function(err){
+        grunt.error(err);
+      });
     });
     Promise.all(promises).then(function(){
+      grunt.log.writeln("packing done");
       done();
     })
   });

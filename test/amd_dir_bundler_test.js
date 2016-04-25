@@ -27,30 +27,17 @@ exports.amd_dir_bundler = {
     // setup here if necessary
     done();
   },
-  //default_options: function(test) {
-  //  test.expect(1);
-  //
-  //  var actual = grunt.file.read('tmp/default_options');
-  //  var expected = grunt.file.read('test/expected/default_options');
-  //  test.equal(actual, expected, 'should describe what the default behavior is.');
-  //
-  //  test.done();
-  //},
-  //custom_options: function(test) {
-  //  test.expect(1);
-  //
-  //  var actual = grunt.file.read('tmp/custom_options');
-  //  var expected = grunt.file.read('test/expected/custom_options');
-  //  test.equal(actual, expected, 'should describe what the custom option(s) behavior is.');
-  //
-  //  test.done();
-  //},
-  bundle: function(test) {
-    test.expect(1);
+  
+  modules: function(test) {
+    test.expect(2);
 
     var actual = grunt.file.read('tmp/main5.js');
     var expected = grunt.file.read('test/expected/main5.js');
     test.equal(actual, expected, 'should pack main5 module');
+
+    actual = grunt.file.read('tmp/M1.packed.js');
+    expected = grunt.file.read('test/expected/modules/M1.packed.js');
+    test.equal(actual, expected, 'should pack M1 module');
 
     test.done();
   }

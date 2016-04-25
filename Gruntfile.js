@@ -7,6 +7,7 @@
  */
 
 'use strict';
+var path = require('path');
 
 module.exports = function(grunt) {
 
@@ -19,26 +20,27 @@ module.exports = function(grunt) {
 
     // Configuration to be run (and then tested).
     amd_dir_bundler: {
-      //default_options: {
-      //  options: {
-      //  },
-      //  files: {
-      //    'tmp/default_options': ['test/fixtures/testing', 'test/fixtures/123']
-      //  }
-      //},
-      //custom_options: {
-      //  options: {
-      //    separator: ': ',
-      //    punctuation: ' !!!'
-      //  },
-      //  files: {
-      //    'tmp/custom_options': ['test/fixtures/testing', 'test/fixtures/123']
-      //  }
-      //}
-      main5: {
-        files: {
-          'tmp/main5.js': ['test/fixtures/main5.js']
-        }
+      modules: {
+        files: [
+          {
+            expand: true,
+            src: 'test/fixtures/modules/*/*.js',
+            filter: function(filePath){
+              var splited   = filePath.split("/");
+              var fileName  = splited.pop().split(".js")[0];
+              var dirName   = splited.pop();
+              return fileName === dirName;
+            },
+            ext: '.packed.js',
+            dest: 'tmp',
+            rename: function(dest, src){
+              return "tmp" + path.sep + path.basename(src);
+            }
+          },
+          {
+            'tmp/main5.js': ['test/fixtures/main5.js']
+          }
+        ]
       }
     },
 
@@ -59,7 +61,7 @@ module.exports = function(grunt) {
 
   // Whenever the "test" task is run, first clean the "tmp" dir, then run this
   // plugin's task(s), then test the result.
-  grunt.registerTask('test', ['clean', 'amd_dir_bundler', 'nodeunit']);
+  grunt.registerTask('test', ['clean', 'amd_dir_bundler', 'nodeunit', 'clean']);
 
   // By default, lint and run all tests.
   grunt.registerTask('default', ['test']);
