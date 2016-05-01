@@ -17,13 +17,13 @@ module.exports = function(grunt) {
   grunt.registerMultiTask('amd_dir_bundler', 'bundle an AMD module with its private dependencies into a single javascript file', function() {
     var done = this.async();
     // Merge task-specific and/or target-specific options with these defaults.
-    // var options = this.options({
-    //
-    // });
+    var options = this.options({
+
+    });
 
     // Iterate over all specified files
     var promises = this.files.map(function(el) {
-      return bundler.pack(el.src[0]).then(function(res){
+      return bundler.pack(el.src[0], options).then(function(res){
         grunt.file.write(el.dest, res.code);
         grunt.log.writeln('File "' + el.dest + '" created.');
       }, function(err){

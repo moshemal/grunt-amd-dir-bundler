@@ -41,6 +41,16 @@ module.exports = function(grunt) {
             'tmp/main5.js': ['test/fixtures/main5.js']
           }
         ]
+      },
+      main6: {
+        options: {
+          useSubOf: ['sandbox']
+        },
+        files: [
+          {
+            'tmp/main6.js': ['test/fixtures/main6.js']
+          }
+        ]
       }
     },
 
@@ -61,7 +71,7 @@ module.exports = function(grunt) {
 
   // Whenever the "test" task is run, first clean the "tmp" dir, then run this
   // plugin's task(s), then test the result.
-  grunt.registerTask('test', ['clean', 'amd_dir_bundler', 'nodeunit', 'clean']);
+  grunt.registerTask('test', ['clean', 'amd_dir_bundler', 'amd_dir_bundler:main6', 'nodeunit', 'clean']);
 
   // By default, lint and run all tests.
   grunt.registerTask('default', ['test']);
