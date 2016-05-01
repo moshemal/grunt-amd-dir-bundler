@@ -4,7 +4,7 @@
 define(['./controller/1'], function(ctrl){
   'use strict';
   return {
-    name: "1/main3",
+    name: "1/M2",
     deps: [ctrl]
   };
 });

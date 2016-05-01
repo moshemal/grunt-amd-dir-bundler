@@ -6,5 +6,5 @@ define(['../utils/1'], function(utils){
   return {
     name: "1/controller/1",
     deps: [utils]
-  }
+  };
 });

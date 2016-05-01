@@ -15,7 +15,7 @@ module.exports = function(grunt) {
   grunt.initConfig({
     // Before generating any new files, remove any previously-created files.
     clean: {
-      tests: ['tmp']
+      tmp: ['tmp']
     },
 
     // Configuration to be run (and then tested).

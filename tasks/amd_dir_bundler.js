@@ -24,7 +24,7 @@ module.exports = function(grunt) {
     // Iterate over all specified files
     var promises = this.files.map(function(el) {
       return bundler.pack(el.src[0]).then(function(res){
-        grunt.file.write(el.dest, res);
+        grunt.file.write(el.dest, res.code);
         grunt.log.writeln('File "' + el.dest + '" created.');
       }, function(err){
         grunt.error(err);

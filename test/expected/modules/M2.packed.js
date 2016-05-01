@@ -1,5 +1,4 @@
 define([], function() {
-
   var __modules = {};
   __modules["utils/1"] = (function() {
     'use strict';
@@ -10,7 +9,6 @@ define([], function() {
       privates: [str]
     };
   })();
-
   __modules["controller/1"] = (function(utils) {
     'use strict';
     return {
@@ -18,13 +16,12 @@ define([], function() {
       deps: [utils]
     };
   })(__modules["utils/1"]);
-
-  __modules["main3"] = (function(ctrl) {
+  __modules["M2"] = (function(ctrl) {
     'use strict';
     return {
-      name: "1/main3",
+      name: "1/M2",
       deps: [ctrl]
     };
   })(__modules["controller/1"]);
-  return __modules["main3"];
+  return __modules["M2"];
 });

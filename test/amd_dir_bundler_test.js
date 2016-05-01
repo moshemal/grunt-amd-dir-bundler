@@ -29,7 +29,7 @@ exports.amd_dir_bundler = {
   },
   
   modules: function(test) {
-    test.expect(2);
+    test.expect(3);
 
     var actual = grunt.file.read('tmp/main5.js');
     var expected = grunt.file.read('test/expected/main5.js');
@@ -38,6 +38,10 @@ exports.amd_dir_bundler = {
     actual = grunt.file.read('tmp/M1.packed.js');
     expected = grunt.file.read('test/expected/modules/M1.packed.js');
     test.equal(actual, expected, 'should pack M1 module');
+
+    actual = grunt.file.read('tmp/M2.packed.js');
+    expected = grunt.file.read('test/expected/modules/M2.packed.js');
+    test.equal(actual, expected, 'should pack M2 module');
 
     test.done();
   }
