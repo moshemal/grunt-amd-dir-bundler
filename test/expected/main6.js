@@ -1,4 +1,4 @@
-define(["sandbox/bla", "sandbox/bla/nestedBla"], function(){
+define(["sandbox", "sandbox"], function(){
   var __modules = {};
   __modules["utils/1"] = (function(){
     'use strict';
